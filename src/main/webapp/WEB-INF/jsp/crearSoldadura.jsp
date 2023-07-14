@@ -39,9 +39,20 @@
 		<form:form method="POST" action="/guardarSoldadura"
 			modelAttribute="weld">
 			<c:if test="${action == 'update'}">
+			<c:if test="${weld.state != 'PENDIENTE'}">
 				<td><h4>
-						<span class="badge bg-success mb-3">${weld.state}</span>
-					</h4>
+						<span class="badge bg-primary mb-3">${weld.state}</span>
+					</h4></td></c:if>
+					<c:if test="${weld.state == 'PENDIENTE'}">
+									<td><h4>
+						<span class="badge bg-dark mb-3">${weld.state}</span></h4>
+						<h4>Desea validar la soldadura?</h4>
+						<a href="/aceptarSoldadura/${weld.id}"
+								class=" btn btn-success mb-3 mt-2" role="button" aria-pressed="true">ACEPTAR</a>
+								<a href="/confirmarSoldadura/${weld.id}"
+								class=" btn btn-danger mb-3 ms-5 mt-2" role="button" aria-pressed="true">RECHAZAR</a>
+					</td>
+					</c:if>
 			</c:if>
 
 			<table>

@@ -200,10 +200,27 @@ public class WeldController {
 			}
 			if (a == 1) {
 				alarmRepository.save(alarma(weld));
+				weld.get().setState(WeldStatus.PENDIENTE.toString());
+				weldRepository.save(weld.get());
+			}
+			else {
+				weld.get().setState(WeldStatus.ACEPTADA.toString());
+				weldRepository.save(weld.get());
 			}
 		}
 
 		return "redirect:/soldador/verPieza/" + weld.get().getPiece().getId();
+	}
+	
+	@RequestMapping("/aceptarSoldadura/{id}")
+	public String aceptarSoldadura(@PathVariable Long id, Model model) {
+		Optional<Weld> weld = weldRepository.findById(id);
+		
+		if(WeldStatus.PENDIENTE.toString().equals(weld.get().getState())) {		
+			weld.get().setState(WeldStatus.ACEPTADA.toString());
+			weldRepository.save(weld.get());
+		}
+		return "redirect:/verSoldadura/" + id;
 	}
 
 	private Reading lectura(Long id, int sec) {

@@ -45,20 +45,11 @@ public class Machine {
 	
 	public Machine() {	}
 
-	public Machine(String serialNumber) {
+	public Machine(String serialNumber, Company company) {
 		super();
 		this.serialNumber = serialNumber;
-//		this.company = company;
-//		this.product = product;
+		this.company = company;
 	}
-	
-	/*public Machine(long id, String serialNumber) {
-		super();
-		this.id = id;
-		this.serialNumber = serialNumber;
-//		this.company = company;
-//		this.product = product;
-	}*/
 
 	public long getId() {
 		return id;
@@ -75,31 +66,6 @@ public class Machine {
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
-	
-//	public Company getCompany() {
-//		return company;
-//	}
-//
-//	public void setCompany(Company company) {
-//		this.company = company;
-//	}
-
-//	public Set<Issue> getIssues() {
-//		return issues;
-//	}
-//
-//	public void setIssues(Set<Issue> issues) {
-//		this.issues = issues;
-//	}
-
-//	public Product getProduct() {
-//		return product;
-//	}
-
-//	public void setProduct(Product product) {
-//		this.product = product;
-//	}
-
 
 	public Company getCompany() {
 		return company;
@@ -116,13 +82,4 @@ public class Machine {
 	public void setProjectMachine(Set<ProjectMachine> projectMachine) {
 		this.projectMachine = projectMachine;
 	}
-
-
-	/*public Set<Project> getProjects() {
-		return projects;
-	}
-
-	public void setProjects(Set<Project> projects) {
-		this.projects = projects;
-	}*/
 }

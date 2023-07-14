@@ -7,7 +7,6 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -49,7 +48,7 @@ public class WebSecurityConfig {
 
                 http.authorizeRequests()
                 // URL matching for accessibility
-                .antMatchers("/", "/login", "/register").permitAll()
+                .antMatchers("/", "/login", "/register", "/images/**", "/js/**", "/webjars/**").permitAll()
                 .antMatchers("/quitarUser/**").hasRole("User")
                 .antMatchers("/user").hasRole("User")
                 .antMatchers("/verUser/**").hasRole("User")
@@ -77,13 +76,14 @@ public class WebSecurityConfig {
 
                 http.authenticationProvider(authenticationProvider());
                 http.headers().frameOptions().sameOrigin();
-
+                
                 return http.build();
     }
 
-    @Bean
+    //¡¡¡¡¡Está deprecated!!!!!
+    /*@Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
-    }
+    }*/
 
 }
