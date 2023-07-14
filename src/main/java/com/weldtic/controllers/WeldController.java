@@ -211,7 +211,7 @@ public class WeldController {
 
 		return "redirect:/soldador/verPieza/" + weld.get().getPiece().getId();
 	}
-	
+	//Acepta la soldadura
 	@RequestMapping("/aceptarSoldadura/{id}")
 	public String aceptarSoldadura(@PathVariable Long id, Model model) {
 		Optional<Weld> weld = weldRepository.findById(id);
