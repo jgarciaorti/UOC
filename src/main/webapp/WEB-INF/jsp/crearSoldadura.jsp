@@ -47,9 +47,9 @@
 									<td><h4>
 						<span class="badge bg-dark mb-3">${weld.state}</span></h4>
 						<h4>Desea validar la soldadura?</h4>
-						<a href="/aceptarSoldadura/${weld.id}"
+						<a href="/validarSoldadura/${weld.id}/ACEPTADA"
 								class=" btn btn-success mb-3 mt-2" role="button" aria-pressed="true">ACEPTAR</a>
-								<a href="/confirmarSoldadura/${weld.id}"
+								<a href="/validarSoldadura/${weld.id}/RECHAZADA"
 								class=" btn btn-danger mb-3 ms-5 mt-2" role="button" aria-pressed="true">RECHAZAR</a>
 					</td>
 					</c:if>

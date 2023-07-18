@@ -24,7 +24,15 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${welds}" var="weld">
-					<tr>
+									<c:choose>
+	<c:when test="${weld.state == 'PENDIENTE'}">
+		<c:set var="warning" value="table-warning"></c:set>
+	</c:when>
+	<c:otherwise>
+		<c:set var="warning" value=""></c:set>
+	</c:otherwise>
+	</c:choose>
+					<tr class="${warning}">
 						<td>${weld.id}</td>
 						<td>${weld.state}</td>
 						<td>${weld.amp}</td>

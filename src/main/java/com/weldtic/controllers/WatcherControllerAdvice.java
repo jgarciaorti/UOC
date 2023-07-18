@@ -26,7 +26,7 @@ public class WatcherControllerAdvice {
 			if(authentication.getPrincipal().getClass().getName() == "com.weldtic.model.Manager") {
 			Object manager = authentication.getPrincipal();
 			mg = (Manager) manager;
-			List<Weld> welds = weldRepository.findByManagerWithAlarm(mg.getId());
+			List<Weld> welds = weldRepository.findByManagerWithAlarmPendant(mg.getId());
 			model.addAttribute("alarms", welds.size());
 			}
 		}

@@ -156,6 +156,8 @@ public class WeldController {
 		Manager currentPrincipalName = (Manager) authentication.getPrincipal();
 
 		List<Weld> welds = weldRepository.findByManagerWithAlarm(currentPrincipalName.getId());
+		
+
 		model.addAttribute("welds", welds);
 
 		return "verAlarma";
@@ -211,17 +213,18 @@ public class WeldController {
 
 		return "redirect:/soldador/verPieza/" + weld.get().getPiece().getId();
 	}
-	//Acepta la soldadura
-	@RequestMapping("/aceptarSoldadura/{id}")
-	public String aceptarSoldadura(@PathVariable Long id, Model model) {
+	//Aceptar o rechazar la soldadura con alarma
+	@RequestMapping("/validarSoldadura/{id}/{state}")
+	public String aceptarSoldadura(@PathVariable Long id, Model model, @PathVariable String state) {
 		Optional<Weld> weld = weldRepository.findById(id);
 		
 		if(WeldStatus.PENDIENTE.toString().equals(weld.get().getState())) {		
-			weld.get().setState(WeldStatus.ACEPTADA.toString());
+			weld.get().setState(state);
 			weldRepository.save(weld.get());
 		}
 		return "redirect:/verSoldadura/" + id;
 	}
+	
 
 	private Reading lectura(Long id, int sec) {
 		Weld weld = new Weld();
