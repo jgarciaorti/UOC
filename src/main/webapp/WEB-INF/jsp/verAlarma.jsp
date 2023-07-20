@@ -10,7 +10,7 @@
 
 	<div class="card-header mb-3 bg-info">Soldaduras de la pieza</div>
 	<div class="card-body">
-		<table id="table" class="tableOrder table-striped table-bordered table-hover">
+		<table id="ordertable" class="tableOrder table table-bordered table-hover table-striped">
 			<thead>
 				<tr>
 					<th>Id</th>
