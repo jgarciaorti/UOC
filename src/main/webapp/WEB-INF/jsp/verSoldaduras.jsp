@@ -25,7 +25,9 @@
 				<c:forEach items="${welds}" var="weld">
 					<tr>
 						<td>${weld.id}</td>
-						<td>${weld.state}</td>
+						<td><span class="badge rounded-pill bg-light text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="${weld.state}">
+  ${weld.state}</span>
+</td>
 						<td>${weld.amp}</td>
 						<td>${weld.volt}</td>
 						<td>${weld.piece.projectMachine.project.name}</td>
