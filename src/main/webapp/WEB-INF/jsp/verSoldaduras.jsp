@@ -1,10 +1,13 @@
+<%@page import="com.weldtic.enums.WeldStatus"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 
-<h1>Soldaduras</h1>
+<%--Es una forma de traer el valor de los enums y no tener que usar string en los if --%>
+<c:set var="PENDIENTE" value="<%=WeldStatus.PENDIENTE%>"/>
 
+<h1>Soldaduras</h1>
 <div class="card mt-1">
 	<div class="card-header mb-3 bg-info">Listado de soldaduras</div>
 	<div class="card-body">
@@ -22,12 +25,26 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 				<c:forEach items="${welds}" var="weld">
+					<c:if test="${weld.state == PENDIENTE}">
+						<c:set var="color" value="bg-warning text-dark"></c:set>
+					</c:if>
+					<c:if test="${weld.state == 'ACEPTADA'}">
+						<c:set var="color" value="bg-success text-dark"></c:set>
+					</c:if>
+					<c:if test="${weld.state == 'RECHAZADA'}">
+						<c:set var="color" value="bg-danger text-dark"></c:set>
+					</c:if>
+					<c:if
+						test="${weld.state == 'INICIADA' || weld.state == 'FINALIZADA' || weld.state == 'CREADA'}">
+						<c:set var="color" value="bg-info text-dark"></c:set>
+					</c:if>
 					<tr>
 						<td>${weld.id}</td>
-						<td><span class="badge rounded-pill bg-light text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="${weld.state}">
-  ${weld.state}</span>
-</td>
+						<td><span class="badge rounded-pill ${color}"
+							data-bs-toggle="tooltip" data-bs-placement="top"
+							title="${weld.state}"> ${weld.state}</span></td>
 						<td>${weld.amp}</td>
 						<td>${weld.volt}</td>
 						<td>${weld.piece.projectMachine.project.name}</td>

@@ -18,6 +18,7 @@
 					<th>Intensidad</th>
 					<th>Voltaje</th>
 					<th>Tolerancia</th>
+					<th>Pieza</th>
 					<th>Alarma</th>
 					<th></th>
 				</tr>
@@ -38,6 +39,7 @@
 						<td>${weld.amp}</td>
 						<td>${weld.volt}</td>
 						<td>${weld.tolerance}</td>
+						<td>${weld.piece.projectMachine.project.name}</td>
 						<td>${weld.alarm.info}</td>
 						<td><a href="/verSoldadura/${weld.id}"
 							class=" btn btn-primary btn-sm active" role="button"

@@ -6,7 +6,7 @@
     } );
 } );
 
-/*El # es si pones el nombre del id en el jsp, el . es para que busque clases*/
+/*El # es si pones el nombre del id en el jsp dentro de table, se puede ver el ejemplo en verAlarma. Por otra parte, el . es para que busque clases*/
  $(document).ready(function() {
     $('#ordertable').DataTable( {
         "language": {

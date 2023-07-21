@@ -58,11 +58,19 @@
 							<li class="nav-item"><a class="nav-link" href="/verSoldaduras"><i class="bi bi-search"></i> Buscar soldadura</a></li>
 						</ul>
 						<a role="button" class="btn btn-primary position-relative me-3"
-							href="/alarma"> <i class="bi bi-bell text-warning"></i> <span
+							href="/alarma"> <i class="bi bi-bell text-warning"></i> 
+							<c:choose>
+							<c:when test="${alarms == 0 }"><span
+							class="position-absolute top-5 start-10 translate-middle badge rounded-pill bg-danger"
+							style="top: 5px; left: 35px;"></span></c:when>
+							<c:otherwise>
+							<span
 							class="position-absolute top-5 start-10 translate-middle badge rounded-pill bg-danger"
 							style="top: 5px; left: 35px;"> <c:out value="${alarms}"></c:out>
 								<span class="visually-hidden">unread messages</span>
 						</span>
+						</c:otherwise>
+						</c:choose>
 						</a>
 					</security:authorize>
 					<security:authorize access="hasRole('Welder')">
